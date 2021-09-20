@@ -20,6 +20,9 @@ $ mix deps.get
 # configure database
 $ mix ecto.create
 
-# start phonix app
+# database migration
+$ mix ecto.migrate
+
+# start phoenix app
 $ mix phx.server
 ```
