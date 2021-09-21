@@ -19,6 +19,15 @@ defmodule KargohackathonWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/api", KargohackathonWeb do
+    pipe_through :api
+    get "/staff", StaffController, :index
+    get "/staff/:id", StaffController, :show
+    post "/staff", StaffController, :create
+    put "/staff/:id", StaffController, :update
+    delete "/staff/:id", StaffController, :delete
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", KargohackathonWeb do
   #   pipe_through :api
