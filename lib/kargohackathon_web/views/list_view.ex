@@ -11,4 +11,8 @@ defmodule KargohackathonWeb.V1.ListView do
       name: list.name
     }
   end
+
+  def render("show.json", %{list: list}) do
+    %{error: 0, error_msg: "", data: %{list: render_one(list, KargohackathonWeb.V1.ListView, "detail.json")}}
+  end
 end

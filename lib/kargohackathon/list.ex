@@ -26,4 +26,8 @@ defmodule Kargohackathon.List do
     |> List.changeset(attrs)
     |> Repo.insert()
   end
+
+  def get_detail(id) do
+    Repo.get(List, id)
+  end
 end
