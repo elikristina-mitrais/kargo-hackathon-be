@@ -11,6 +11,7 @@ defmodule KargohackathonWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug CORSPlug, origin: ["http://localhost:3000"]
   end
 
   scope "/", KargohackathonWeb do
@@ -24,7 +25,8 @@ defmodule KargohackathonWeb.Router do
     pipe_through :api
 
     scope "/v1", V1, as: :v1 do
-      resources "/lists",  ListController
+      resources "/lists",  ListController, only: [:index, :show, :create, :update]
+      resources "/staffs",  StaffController, only: [:index, :show, :create, :update]
     end
   end
 
