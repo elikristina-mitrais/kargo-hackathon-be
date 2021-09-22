@@ -20,9 +20,15 @@ defmodule KargohackathonWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", KargohackathonWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", KargohackathonWeb do
+    pipe_through :api
+    # resources "/staffs", StaffController,
+
+    get "/staffs", StaffController, :index
+    post "/staffs", StaffController, :create
+    get "/staffs/:id", StaffController, :show
+
+  end
 
   # Enables LiveDashboard only for development
   #
