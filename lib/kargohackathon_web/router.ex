@@ -27,6 +27,7 @@ defmodule KargohackathonWeb.Router do
     get "/staffs", StaffController, :index
     post "/staffs", StaffController, :create
     get "/staffs/:id", StaffController, :show
+    put "/staffs/:id", StaffController, :update
 
   end
 
