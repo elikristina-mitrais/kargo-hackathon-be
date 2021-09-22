@@ -24,4 +24,17 @@ defmodule KargohackathonWeb.V1.StaffController do
         |> render(KargohackathonWeb.ErrorView, "error.json", changeset: changeset)
     end
   end
+
+  def update(conn, %{"id" => id, "staff" => staff_params}) do
+    staff = Staff.get_detail(id)
+
+    case Staff.update_detail(staff, staff_params) do
+      {:ok, staff} ->
+        json(conn, %{error: 0, error_msg: ""})
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render(KargohackathonWeb.ErrorView, "error.json", changeset: changeset)
+    end
+  end
 end
