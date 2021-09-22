@@ -6,8 +6,10 @@ defmodule KargohackathonWeb.StaffController do
 
   action_fallback KargohackathonWeb.FallbackController
 
-  def index(conn, _params) do
-    staffs = Schema.list_staffs()
+  def index(conn, params) do
+    page = params["page"] || 1
+
+    staffs = Schema.list_staffs(:paged, page)
     render(conn, "index.json", staffs: staffs)
   end
 
